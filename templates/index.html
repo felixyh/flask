@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% if title %}
+            <title>{{ title }}</title>
+        {% else %}
+            <title>Flask App</title>
+        {% endif %}
+    </head>
+    <body>
+        <h1>Hello, Flask!</h1>
+        {% for pragraph in pragraphs %}
+            <p>{{ pragraph }}</p>
+        {% endfor %}
+    </body>
+</html>

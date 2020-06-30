@@ -1,22 +1,15 @@
-from flask import Flask
-from flask import request, render_template
-from flask import redirect
-from datetime import datetime
-import re
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    user_agent = request.headers.get('User-Agent')
-    urlmap = app.url_map
-    return "Hello, Flask! " + "<p>Your browser is %s</p>" % user_agent + "<p>this is URL map %s </p>" % urlmap
+@app.route('/')
+def index():
+    content = [
+        'section:1',
+        'section:2',
+        'section:3',
+    ]
+    return render_template('index.html', title='home', pragraphs=content)
 
-@app.route("/hello/")
-@app.route("/hello/<name>")
-def hello_there(name = None):
-    return render_template(
-        "hello_there.html",
-        name=name,
-        date=datetime.now()
-    )
+if __name__ == "__main__":
+    app.run(debug=True)
